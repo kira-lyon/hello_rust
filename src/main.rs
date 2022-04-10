@@ -5,17 +5,13 @@ fn main() {
     let number = env::args().nth(2).expect("No count given");
 
     let mut count : usize = match (number).trim().parse() {
+        Ok(num) if num > 10 => 0,
         Ok(num) => num,
         Err(_) => 0,
     };
 
-    if count > 10 {
-        println!("Up to 10.")
-    }
-    else {
-        while count > 0 {
-            println!("{}", phrase);
-            count-=1;
-        }
+    while count > 0 {
+        println!("{}", phrase);
+        count-=1;
     }
 }
