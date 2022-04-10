@@ -1,14 +1,10 @@
-use std::io;
+use std::env;
 
 fn main() {
-    let mut input = String::new();
-    io::stdin()
-        .read_line(&mut input)
-        .expect("Failed to read line");
+    let phrase = env::args().nth(1).expect("No phrase given");
+    let number = env::args().nth(2).expect("No count given");
 
-    let iter = &mut input.split_whitespace();
-    let phrase = iter.next().unwrap_or_default();
-    let mut count : usize = match iter.next().unwrap_or_default().trim().parse() {
+    let mut count : usize = match (number).trim().parse() {
         Ok(num) => num,
         Err(_) => 0,
     };
